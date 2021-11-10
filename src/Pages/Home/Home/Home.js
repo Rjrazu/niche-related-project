@@ -1,13 +1,19 @@
 import React from 'react';
-import Login from '../../Login/Login/Login';
+import Contact from '../../Shared/Contact/Contact';
 import Banner from '../Banner/Banner';
+import Products from '../Products/Products';
+import WelcomeNote from '../WelcomeNote/WelcomeNote';
+import Feedback from '../Feedback/Feedback';
 
 
 const Home = () => {
     return (
         <div>
-            <Banner></Banner>
-            <Login></Login>
+            <Banner />
+            <WelcomeNote />
+            <Products />
+            <Feedback />
+            <Contact />
         </div>
     );
 };
