@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Col } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 
-const Product = ({ product }) => {
+const SingleProducts = ({ product }) => {
     const { _id, model, controlType, color, description, material, price, image } = product;
     const history = useHistory();
 
@@ -37,4 +37,4 @@ const Product = ({ product }) => {
     );
 };
 
-export default Product;
+export default SingleProducts;

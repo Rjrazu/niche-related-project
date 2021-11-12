@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import { useHistory, useLocation } from 'react-router';
+import { useHistory } from 'react-router';
 import useAuth from '../../../hooks/useAuth';
 import { Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 
-const Login = () => {
+const Register = () => {
 
     const [loginData, setLoginData] = useState({});
-    const { user, loginUser, isLoading, authError } = useAuth();
-
-    const location = useLocation();
     const history = useHistory();
+    const { user, registerUser, isLoading, authError } = useAuth();
 
     const handleOnBlur = e => {
         const field = e.target.name;
@@ -20,7 +18,11 @@ const Login = () => {
         setLoginData(newLoginData);
     }
     const handleLoginSubmit = e => {
-        loginUser(loginData.email, loginData.password, location, history);
+        if (loginData.password !== loginData.password2) {
+            alert('Your password did not match');
+            return
+        }
+        registerUser(loginData.email, loginData.password, loginData.name, history);
         e.preventDefault();
     }
 
@@ -29,6 +31,14 @@ const Login = () => {
             <div className="bg-light m-5">
                 <h2 className="text-dark  p-2 text-center mb-3">Login Now</h2>
                 <form onSubmit={handleLoginSubmit}>
+                    <input
+                        onBlur={handleOnBlur}
+                        type="text"
+                        className="form-control w-75 m-2"
+                        placeholder="Name"
+                        name="name"
+                        required
+                    />
                     <input
                         onBlur={handleOnBlur}
                         type="email"
@@ -46,22 +56,31 @@ const Login = () => {
                         required
                     />
                     <input
+                        onBlur={handleOnBlur}
+                        type="password"
+                        className="form-control w-75 m-2"
+                        placeholder="Re-Type Password"
+                        name="password2"
+                        required
+                    />
+                    <input
                         type="submit"
                         className="btn btn-primary m-2"
                         value="Login Now"
                     ></input>
                 </form>
                 {isLoading && <h6>Loading...</h6>}
-                {user?.email && <h6>Login successfully!</h6>}
+                {user?.email && <h6>User Created successfully!</h6>}
                 {authError && <p>{authError}</p>}
                 <div> <NavLink
                     style={{ textDecoration: 'none' }}
-                    to="/register">
-                    <Button variant="success">New User? Please Register</Button>
+                    to="/login">
+                    <Button variant="success">Old User? Please login</Button>
                 </NavLink></div>
+
             </div>
-        </div >
+        </div>
     );
 };
 
-export default Login;
+export default Register;

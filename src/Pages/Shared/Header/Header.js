@@ -1,12 +1,12 @@
 import React from 'react';
 import { useHistory } from 'react-router';
-import { Button, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 
 const Header = () => {
 
-    const { user, logOut } = useAuth();
+    const { admin, user, logOut } = useAuth();
     const history = useHistory();
 
     const handleLoginButton = () => {
@@ -69,43 +69,36 @@ const Header = () => {
                             >
                                 Contact
                             </NavLink>
-                            {user?.uid ?
-                                <NavLink
-                                    to="/my_products"
-                                    style={navStyle}
-                                    activeStyle={activeStyle}
-                                >
-                                    My Products
-                                </NavLink>
+
+                            {user?.uid ? <NavLink
+                                to="/my_orders"
+                                style={navStyle}
+                                activeStyle={activeStyle}
+                            >
+                                My Orders
+                            </NavLink>
                                 : <></>}
-                            {user?.uid ?
-                                <NavLink
-                                    to="/admin"
-                                    style={navStyle}
-                                    activeStyle={activeStyle}
-                                >
-                                    Admin Panel
-                                </NavLink>
-                                : <></>}
-                            {user?.uid
-                                ?
-                                <NavDropdown title={<span > <img src={user?.photoURL} alt="" style={{ width: '50px', height: '50px', borderRadius: "50%" }} /> </span>} id="navbarScrollingDropdown">
-                                    <NavDropdown.Item>
-                                        <div>
-                                            <h6 className="mb-3"><i className="bg-danger fas fa-address-card"></i> {user?.displayName}</h6>
-                                            <Button onClick={logOut} variant="danger">Logout</Button>
-                                        </div></NavDropdown.Item>
-                                </NavDropdown>
+
+                            {admin && <NavLink
+                                to="/admin"
+                                style={navStyle}
+                                activeStyle={activeStyle}
+                            >
+                                Admin Panel
+                            </NavLink>}
+
+                            {user?.uid ? <div className="d-flex justify-content-center align-items-center">
+                                <h6 className="d-inline me-2"><i className="bg-danger fas fa-address-card"></i> <span className="text-white"> {user?.displayName}</span> </h6>
+                                <Button onClick={logOut} variant="danger">Logout</Button>
+                            </div>
                                 :
                                 <Button onClick={handleLoginButton} variant="success">Login</Button>}
-
-
                         </Nav>
 
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-        </div>
+        </div >
     );
 };
 

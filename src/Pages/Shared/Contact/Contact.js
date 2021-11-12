@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const Contact = () => {
     return (
         <div className="container border mt-4 mb-5">
