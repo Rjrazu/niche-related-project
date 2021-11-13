@@ -14,23 +14,21 @@ const useFirebase = () => {
 
     const auth = getAuth();
 
-    const registerUser = (email, password, name, location, history) => {
+    const registerUser = (email, password, name, history) => {
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 setAuthError('');
                 const newUser = { email, displayName: name };
                 setUser(newUser);
-                // save user to the database
                 saveUser(email, name, 'POST');
-                // send name to firebase after creation
                 updateProfile(auth.currentUser, {
                     displayName: name
                 }).then(() => {
                 }).catch((error) => {
                 });
-                const destination = location?.state?.from || '/dashboard';
-                history.replace(destination);
+                history.replace('/');
+
             })
             .catch((error) => {
                 setAuthError(error.message);
