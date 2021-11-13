@@ -1,12 +1,11 @@
 import React from 'react';
-import { Col, Container, Nav, NavLink, Row, Tab, } from 'react-bootstrap';
+import { Col, Container, Nav, NavLink, Row, Tab } from 'react-bootstrap';
 import useAuth from '../../../hooks/useAuth';
-import AddAdmin from '../AddAdmin/AddAdmin';
-import AddProducts from '../AddProducts/AddProducts';
-import AllOrders from '../AllOrders/AllOrders';
-import AllProducts from '../AllProducts/AllProducts';
+import Payment from '../Payment/Payment';
+import MyOrders from '../MyOrders/MyOrders'
+import AddReview from '../AddReview/AddReview';
 
-const Admin = () => {
+const GeneralUser = () => {
     const { logOut } = useAuth();
     return (
 
@@ -17,16 +16,13 @@ const Admin = () => {
                         <Col lg={4} md={4} sm={12}>
                             <Nav variant="pills" className="flex-column">
                                 <Nav.Item>
-                                    <Nav.Link eventKey="first">Add a New Package</Nav.Link>
+                                    <Nav.Link eventKey="first">My Orders</Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item>
-                                    <Nav.Link eventKey="second"> Manage All Orders</Nav.Link>
+                                    <Nav.Link eventKey="second"> Pay Now</Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item>
-                                    <Nav.Link eventKey="third"> Manage All Products</Nav.Link>
-                                </Nav.Item>
-                                <Nav.Item>
-                                    <Nav.Link eventKey="fourth"> Add a Admin</Nav.Link>
+                                    <Nav.Link eventKey="third"> Add a Review</Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item>
                                     <NavLink onClick={logOut}> Log Out</NavLink>
@@ -36,16 +32,13 @@ const Admin = () => {
                         <Col lg={8} md={8} sm={12}>
                             <Tab.Content>
                                 <Tab.Pane eventKey="first">
-                                    <AddProducts></AddProducts>
+                                    <MyOrders></MyOrders>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="second">
-                                    <AllOrders></AllOrders>
+                                    <Payment></Payment>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="third">
-                                    <AllProducts></AllProducts>
-                                </Tab.Pane>
-                                <Tab.Pane eventKey="fourth">
-                                    <AddAdmin></AddAdmin>
+                                    <AddReview></AddReview>
                                 </Tab.Pane>
                             </Tab.Content>
                         </Col>
@@ -57,4 +50,4 @@ const Admin = () => {
     );
 };
 
-export default Admin;
+export default GeneralUser;

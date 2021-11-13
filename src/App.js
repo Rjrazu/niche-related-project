@@ -14,6 +14,9 @@ import Admin from './Pages/Shared/Admin/Admin';
 import AllProducts from './Pages/Shared/AllProducts/AllProducts';
 import MyOrders from './Pages/Shared/MyOrders/MyOrders';
 import Payment from './Pages/Shared/Payment/Payment';
+import Dashboard from './Pages/Login/Dashboard/Dashboard';
+import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
+import AdminRoute from './Pages/Login/AdminRoute/AdminRoute';
 
 
 function App() {
@@ -32,27 +35,30 @@ function App() {
             <Route exact path="/login">
               <Login></Login>
             </Route>
-            <Route exact path="/admin">
+            <AdminRoute exact path="/admin">
               <Admin></Admin>
-            </Route>
+            </AdminRoute>
             <Route exact path="/register">
               <Register></Register>
             </Route>
             <Route exact path="/products">
               <AllProducts></AllProducts>
             </Route>
-            <Route exact path="/booking/:id">
+            <PrivateRoute exact path="/booking/:id">
               <Booking></Booking>
-            </Route>
-            <Route exact path="/contact">
+            </PrivateRoute>
+            <PrivateRoute exact path="/contact">
               <Contact></Contact>
-            </Route>
-            <Route exact path="/paynow">
+            </PrivateRoute>
+            <PrivateRoute exact path="/paynow">
               <Payment></Payment>
-            </Route>
-            <Route exact path="/my_orders">
+            </PrivateRoute>
+            <PrivateRoute exact path="/dashboard">
+              <Dashboard></Dashboard>
+            </PrivateRoute>
+            <PrivateRoute exact path="/my_orders">
               <MyOrders></MyOrders>
-            </Route>
+            </PrivateRoute>
             <Route exact path="/feedback">
               <Feedback></Feedback>
             </Route>

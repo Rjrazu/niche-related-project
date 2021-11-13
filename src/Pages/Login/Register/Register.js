@@ -29,7 +29,7 @@ const Register = () => {
     return (
         <div className="container border mt-4 mb-5">
             <div className="bg-light m-5">
-                <h2 className="text-dark  p-2 text-center mb-3">Login Now</h2>
+                <h2 className="text-dark  p-2 text-center mb-3">Register Now</h2>
                 <form onSubmit={handleLoginSubmit}>
                     <input
                         onBlur={handleOnBlur}
@@ -66,16 +66,16 @@ const Register = () => {
                     <input
                         type="submit"
                         className="btn btn-primary m-2"
-                        value="Login Now"
+                        value="Register"
                     ></input>
                 </form>
                 {isLoading && <h6>Loading...</h6>}
                 {user?.email && <h6>User Created successfully!</h6>}
                 {authError && <p>{authError}</p>}
-                <div> <NavLink
+                <div> <h5 className="d-inline"> Already Have An Account? Please </h5> <NavLink
                     style={{ textDecoration: 'none' }}
                     to="/login">
-                    <Button variant="success">Old User? Please login</Button>
+                    <Button variant="success">Login</Button>
                 </NavLink></div>
 
             </div>

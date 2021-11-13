@@ -25,10 +25,10 @@ const SingleProducts = ({ product }) => {
                     <Card.Body>
                         <Card.Title>{model}</Card.Title>
                         <p>{description.slice(0, 90)}</p>
-                        <Card.Title> <span className="text-danger"><i className="fas fa-angle-double-right"></i></span> Cost : BDT {price}</Card.Title>
-                        <p>{controlType}</p>
-                        <p>{color}</p>
-                        <p>{material}</p>
+                        <Card.Title> <span className="text-danger"><i className="fas fa-angle-double-right"></i></span> Price : BDT {price}</Card.Title>
+                        <p>Type {controlType}</p>
+                        <p>Color {color}</p>
+                        <p>Material {material}</p>
                     </Card.Body>
                     <button className="btn btn-danger" onClick={handleCard}> Purchase Now</button>
                 </Card>

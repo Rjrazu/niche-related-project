@@ -54,10 +54,10 @@ const Login = () => {
                 {isLoading && <h6>Loading...</h6>}
                 {user?.email && <h6>Login successfully!</h6>}
                 {authError && <p>{authError}</p>}
-                <div> <NavLink
+                <div> <h5 className="d-inline"> Don't Have An Account? Please </h5> <NavLink
                     style={{ textDecoration: 'none' }}
                     to="/register">
-                    <Button variant="success">New User? Please Register</Button>
+                    <Button variant="success">Register</Button>
                 </NavLink></div>
             </div>
         </div >

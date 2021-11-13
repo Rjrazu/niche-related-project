@@ -52,10 +52,10 @@ const AllOrders = () => {
                 packs.map(pack => <div key={pack.key}>
                     <Col>
                         <Card className="mb-3">
-                            <Card.Img variant="top" className=" img-fluid" src={pack.image} />
+                            <Card.Img variant="top" className="w-75 img-fluid" src={pack.image} />
                             <Card.Body>
                                 <Card.Title>{pack.model}</Card.Title>
-                                <p>Cost : BDT {pack.price}</p>
+                                <p>Price : BDT {pack.price}</p>
                             </Card.Body>
                             <div className="d-flex justify-content-center">
                                 <button className="btn btn-danger me-3" onClick={() => handleRemove(pack._id)} > Delete Request</button>

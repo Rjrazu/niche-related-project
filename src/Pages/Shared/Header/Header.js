@@ -6,14 +6,14 @@ import useAuth from '../../../hooks/useAuth';
 
 const Header = () => {
 
-    const { admin, user, logOut } = useAuth();
+    const { user, logOut } = useAuth();
     const history = useHistory();
 
     const handleLoginButton = () => {
         history.push('/login')
     }
 
-    const logo = 'https://i.ibb.co/3m61xyh/logo.jpg';
+    const logo = 'https://i.ibb.co/XjkTdDG/nav.jpg';
     const logoStyle = {
         width: '160px',
         borderRadius: '10px'
@@ -70,21 +70,12 @@ const Header = () => {
                                 Contact
                             </NavLink>
 
-                            {user?.uid ? <NavLink
-                                to="/my_orders"
+                            {user?.uid && <NavLink
+                                to="/dashboard"
                                 style={navStyle}
                                 activeStyle={activeStyle}
                             >
-                                My Orders
-                            </NavLink>
-                                : <></>}
-
-                            {admin && <NavLink
-                                to="/admin"
-                                style={navStyle}
-                                activeStyle={activeStyle}
-                            >
-                                Admin Panel
+                                Dashboard
                             </NavLink>}
 
                             {user?.uid ? <div className="d-flex justify-content-center align-items-center">

@@ -17,12 +17,12 @@ const MyOrders = () => {
 
 
     return (
-        <div className="container mt-5 mb-5">
+        <div className="container mb-5">
             <h3 className="text-center mb-4">My Added Packages</h3>
-            <Row xs={1} md={2} lg={4} className="g-4">
+            <Row xs={1} md={2} lg={2} className="g-4">
                 {
                     products.map(product => <AddedProducts
-                        key={product.key}
+                        key={product._id}
                         product={product}
                     ></AddedProducts>)
                 }

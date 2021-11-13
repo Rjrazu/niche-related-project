@@ -7,7 +7,7 @@ const Banner = () => {
     const history = useHistory();
 
     const handleClick = () => {
-        history.push(`/packages`);
+        history.push(`/products`);
     }
 
     return (
@@ -17,12 +17,12 @@ const Banner = () => {
                 </Col>
                 <Col sm={12} md={6} lg={6} className="shadow rounded-3">
                     <h1 className="title">
-                        SkyTravel <br /> BD's No.1 Travel Agency!
+                        DroneHub! <br /> Find Your Favorite Drone!
                     </h1>
                     <p className="text-white mt-3">
-                        We are proud to partner with over 370 tour operators and destination management companies around the world.
+                        Dronehub helps companies with large infrastructure to reduce monitoring costs, get real-time aerial data, and exclude the human factor.
                     </p>
-                    <button onClick={handleClick} className="mt-3 contact-btn">Recent Packages</button>
+                    <button onClick={handleClick} className="mt-3 contact-btn">Products</button>
                 </Col>
             </Row>
         </Container>

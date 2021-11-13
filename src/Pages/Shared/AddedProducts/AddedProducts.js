@@ -37,7 +37,7 @@ const AddedProducts = ({ product }) => {
                     <Card.Img variant="top" className="" style={{ maxWidth: '480px', height: '250px' }} src={image} />
                     <Card.Body>
                         <Card.Title>{model}</Card.Title>
-                        <p>Cost : BDT {price}</p>
+                        <p>Price : BDT {price}</p>
                     </Card.Body>
                     <div className="d-flex justify-content-center">
                         <NavLink
