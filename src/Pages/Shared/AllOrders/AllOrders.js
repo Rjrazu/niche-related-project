@@ -5,14 +5,14 @@ const AllOrders = () => {
     const [packs, setPacks] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/prod')
+        fetch('https://warm-crag-33369.herokuapp.com/prod')
             .then(res => res.json())
             .then(data => setPacks(data))
     }, [])
     const handleRemove = (id) => {
         const procced = window.confirm('Are You Sure To Remove The Package?');
         if (procced) {
-            fetch(`http://localhost:5000/prod/${id}`, {
+            fetch(`https://warm-crag-33369.herokuapp.com/prod/${id}`, {
                 method: "DELETE",
             })
                 .then((res) => res.json())
@@ -30,7 +30,7 @@ const AllOrders = () => {
     const handleApproved = (id) => {
         const procced = window.confirm('Are You Sure To Approved The Package?');
         if (procced) {
-            fetch(`http://localhost:5000/prod/${id}`, {
+            fetch(`https://warm-crag-33369.herokuapp.com/prod/${id}`, {
                 method: "DELETE",
             })
                 .then((res) => res.json())

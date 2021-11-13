@@ -15,14 +15,14 @@ const Booking = () => {
     delete newProduct._id
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${id}`)
+        fetch(`https://warm-crag-33369.herokuapp.com/products/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [id]);
 
 
     const handleOrder = (products) => {
-        axios.post('http://localhost:5000/product/add', products)
+        axios.post('https://warm-crag-33369.herokuapp.com/product/add', products)
             .then(res => {
                 if (res.data.insertedId) {
                     alert('added successfully');

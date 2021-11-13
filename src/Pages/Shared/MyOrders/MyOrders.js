@@ -10,7 +10,7 @@ const MyOrders = () => {
     const [products, SetProduct] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/product/${uid} `)
+        fetch(`https://warm-crag-33369.herokuapp.com/product/${uid} `)
             .then(res => res.json())
             .then(data => SetProduct(data))
     }, [uid])

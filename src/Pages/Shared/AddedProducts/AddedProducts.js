@@ -9,7 +9,7 @@ const AddedProducts = ({ product }) => {
     const handleDelete = (id) => {
         const procced = window.confirm('Are You Sure To Remove The Package?');
         if (procced) {
-            fetch(`http://localhost:5000/product/${id}`, {
+            fetch(`https://warm-crag-33369.herokuapp.com/product/${id}`, {
                 method: "DELETE",
             })
                 .then((res) => res.json())
