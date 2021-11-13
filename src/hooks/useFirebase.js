@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, updateProfile, getIdToken, signOut } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, updateProfile, signOut } from "firebase/auth";
 import firebaseAuthenticationApp from "../Pages/Login/Firebase/firebase.init";
 
 
@@ -11,7 +11,6 @@ const useFirebase = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [authError, setAuthError] = useState('');
     const [admin, setAdmin] = useState(false);
-    const [token, setToken] = useState('');
 
     const auth = getAuth();
 
@@ -58,10 +57,6 @@ const useFirebase = () => {
         const unsubscribed = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user);
-                getIdToken(user)
-                    .then(idToken => {
-                        setToken(idToken);
-                    })
             } else {
                 setUser({})
             }
@@ -70,18 +65,18 @@ const useFirebase = () => {
         return () => unsubscribed;
     }, [auth])
 
+    //Admin Check
     useEffect(() => {
         fetch(`https://warm-crag-33369.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
             .then(data => setAdmin(data.admin))
     }, [user.email])
 
+    //Log Out
     const logOut = () => {
         setIsLoading(true);
         signOut(auth).then(() => {
-            // Sign-out successful.
         }).catch((error) => {
-            // An error happened.
         })
             .finally(() => setIsLoading(false));
     }
@@ -101,7 +96,6 @@ const useFirebase = () => {
     return {
         user,
         admin,
-        token,
         isLoading,
         authError,
         registerUser,
