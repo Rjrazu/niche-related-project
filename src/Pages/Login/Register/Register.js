@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router';
+import { useHistory, useLocation } from 'react-router';
 import useAuth from '../../../hooks/useAuth';
 import { Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
@@ -8,6 +8,7 @@ const Register = () => {
 
     const [loginData, setLoginData] = useState({});
     const history = useHistory();
+    const location = useLocation();
     const { user, registerUser, isLoading, authError } = useAuth();
 
     const handleOnBlur = e => {
@@ -22,7 +23,7 @@ const Register = () => {
             alert('Your password did not match');
             return
         }
-        registerUser(loginData.email, loginData.password, loginData.name, history);
+        registerUser(loginData.email, loginData.password, loginData.name, location, history);
         e.preventDefault();
     }
 
@@ -72,7 +73,7 @@ const Register = () => {
                 {isLoading && <h6>Loading...</h6>}
                 {user?.email && <h6>User Created successfully!</h6>}
                 {authError && <p>{authError}</p>}
-                <div> <h5 className="d-inline"> Already Have An Account? Please </h5> <NavLink
+                <div className="mt-4"> <h5 className="d-inline"> Already Have An Account? Please </h5> <NavLink
                     style={{ textDecoration: 'none' }}
                     to="/login">
                     <Button variant="success">Login</Button>

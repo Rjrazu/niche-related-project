@@ -35,14 +35,16 @@ const Booking = () => {
             <Container>
 
                 <Row>
-                    <Col lg={8}>
+                    <Col lg={7}>
                         <img src={product.image} className="img-fluid rounded-3" alt="" /> <br />
                         <h2>{product.model}</h2>
-                        <h4>Total Cost : BDT {product.price} </h4>
-                        <h5>{product.color}</h5>
+                        <h4>Price : BDT {product.price} </h4>
+                        <p>Type {product.controlType}</p>
+                        <p>Color {product.color}</p>
+                        <p>Material {product.material}</p>
                         <h6>{product.description}</h6>
                     </Col>
-                    <Col className="text-center" lg={4}>
+                    <Col className="text-center" lg={5}>
                         <h2>Booking</h2>
                         <div className="add-service">
                             <button className="btn btn-success" onClick={() => handleOrder(newProduct)}>Order Now</button>
